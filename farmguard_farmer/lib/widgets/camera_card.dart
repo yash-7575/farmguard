@@ -52,7 +52,7 @@ class _CameraCardState extends State<CameraCard> {
     );
 
     return FgCard(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       child: Column(
         children: <Widget>[
           Row(
@@ -81,31 +81,26 @@ class _CameraCardState extends State<CameraCard> {
                   children: <Widget>[
                     Text(camera.name, style: textTheme.titleMedium),
                     const SizedBox(height: 2),
-                    // Location and the short camera id share this line: the
-                    // location keeps its own Text widget (so its exact string
-                    // stays findable) and the id never grows the card.
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Text(
-                            camera.location,
-                            style: secondaryStyle,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          'ID: $_shortId',
-                          style: secondaryStyle?.copyWith(
-                            fontFeatures: const <FontFeature>[
-                              FontFeature.tabularFigures(),
-                            ],
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                    // Location keeps its own Text widget so its exact string
+                    // stays findable; the short id sits on its own muted line
+                    // so neither of them has to truncate.
+                    Text(
+                      camera.location,
+                      style: secondaryStyle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      'ID: $_shortId',
+                      style: textTheme.labelSmall?.copyWith(
+                        color: scheme.outline,
+                        fontFeatures: const <FontFeature>[
+                          FontFeature.tabularFigures(),
+                        ],
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
@@ -116,9 +111,9 @@ class _CameraCardState extends State<CameraCard> {
                   : const StatusChip.offline('Offline'),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Divider(color: scheme.outlineVariant),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Row(
             children: <Widget>[
               Icon(
@@ -137,17 +132,15 @@ class _CameraCardState extends State<CameraCard> {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              Text(
-                'Monitoring',
-                style: textTheme.labelMedium,
-                semanticsLabel: 'Monitoring toggle for ${camera.name}',
-              ),
-              const SizedBox(width: 8),
-              SizedBox(
-                height: 32,
-                child: Switch(
-                  value: _monitoring,
-                  onChanged: (bool value) => setState(() => _monitoring = value),
+              Semantics(
+                label: 'Monitoring toggle for ${camera.name}',
+                child: SizedBox(
+                  height: 32,
+                  child: Switch(
+                    value: _monitoring,
+                    onChanged: (bool value) =>
+                        setState(() => _monitoring = value),
+                  ),
                 ),
               ),
               if (widget.onRemove != null) ...<Widget>[

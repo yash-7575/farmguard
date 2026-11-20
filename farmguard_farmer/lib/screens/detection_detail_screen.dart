@@ -313,19 +313,26 @@ class _FactRow extends StatelessWidget {
             child: Icon(icon, size: 17, color: scheme.onSurfaceVariant),
           ),
           const SizedBox(width: 12),
-          Expanded(child: Text(title, style: textTheme.bodyMedium)),
-          Flexible(
-            flex: 0,
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 200),
-              child: Text(
-                value,
-                style: valueStyle ??
-                    textTheme.bodyMedium?.copyWith(
-                      color: scheme.onSurfaceVariant,
-                    ),
-                textAlign: TextAlign.right,
-              ),
+          // Fixed label column: titles like "Location" must never wrap, and
+          // the value takes whatever width is left (right aligned).
+          SizedBox(
+            width: 92,
+            child: Text(
+              title,
+              style: textTheme.bodyMedium,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              value,
+              style: valueStyle ??
+                  textTheme.bodyMedium?.copyWith(
+                    color: scheme.onSurfaceVariant,
+                  ),
+              textAlign: TextAlign.right,
             ),
           ),
         ],

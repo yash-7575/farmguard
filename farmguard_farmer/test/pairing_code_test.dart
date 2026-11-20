@@ -218,7 +218,7 @@ void main() {
       expect(api.createPairingCodeCalls, 1);
       expect(find.text('428913'), findsOneWidget);
       expect(find.textContaining('Expires in 04:5'), findsOneWidget);
-      expect(find.textContaining('Start Monitoring'), findsOneWidget);
+      expect(find.textContaining('Pair this camera'), findsOneWidget);
     });
 
     testWidgets('regenerate from the shell → second api call, new code',

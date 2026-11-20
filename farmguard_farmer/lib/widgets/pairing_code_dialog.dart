@@ -185,8 +185,8 @@ class _PairingCodeDialogState extends State<PairingCodeDialog> {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Open FarmGuard Camera on the farm phone → Start '
-                    'Monitoring → Pair this camera, then enter this code.',
+                    'Open FarmGuard Camera on the farm phone, tap "Pair this '
+                    'camera", then enter this code.',
                     style: textTheme.bodySmall
                         ?.copyWith(color: scheme.onSurfaceVariant),
                   ),
