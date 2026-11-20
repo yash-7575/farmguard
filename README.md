@@ -65,25 +65,14 @@ small JPEG and a few hundred bytes of JSON, per event.
     <td align="center"><img src="docs/screenshots/farmer-alert-detail.png" width="230" alt="Alert detail"><br><sub><b>Alert detail</b> — photo &amp; metadata</sub></td>
     <td align="center"><img src="docs/screenshots/farmer-settings.png" width="230" alt="Settings"><br><sub><b>Settings</b></sub></td>
   </tr>
-</table>
-
-### Camera app
-
-<table>
   <tr>
-    <td align="center"><img src="docs/screenshots/camera-idle.png" width="230" alt="Idle"><br><sub><b>Idle</b> — ready to monitor</sub></td>
-    <td align="center"><img src="docs/screenshots/camera-pairing.png" width="230" alt="Pairing"><br><sub><b>Pairing</b> — six-digit code</sub></td>
-    <td align="center"><img src="docs/screenshots/camera-connection-details.png" width="230" alt="Connection details"><br><sub><b>Connection details</b></sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/camera-initializing.png" width="230" alt="Initializing"><br><sub><b>Initializing</b> — real startup stages</sub></td>
-    <td align="center"><img src="docs/screenshots/camera-monitoring.png" width="230" alt="Monitoring"><br><sub><b>Monitoring</b> — only once native is live</sub></td>
-    <td align="center"><img src="docs/screenshots/camera-error.png" width="230" alt="Error"><br><sub><b>Recoverable error</b> — with retry</sub></td>
+    <td align="center" colspan="3"><img src="docs/screenshots/farmer-pairing.png" width="230" alt="Pairing"><br><sub><b>Pairing</b> — six-digit code (5 min, single use)</sub></td>
   </tr>
 </table>
 
-<sub>Screenshots are rendered from the real widget tree by a golden-image harness
-(<code>tool/screenshot_test.dart</code> in each app) — not mockups.</sub>
+<sub>Screenshots are rendered from the real widget tree by a golden-image
+harness (<code>farmguard_farmer/tool/screenshot_test.dart</code>) — not mockups.
+Run it yourself with <code>flutter test tool/screenshot_test.dart --update-goldens</code>.</sub>
 
 </div>
 
@@ -237,8 +226,7 @@ farmguard/
 ├── farmguard_camera/           Flutter app — phone that watches
 │   ├── lib/screens/            home screen, startup state machine
 │   ├── lib/services/           detection engine, API client, upload queue, secure storage
-│   ├── test/                   153 cases
-│   └── tool/screenshot_test.dart
+│   └── test/                   153 cases
 │
 ├── farmguard_farmer/           Flutter app — phone in the pocket
 │   ├── lib/screens/            shell, dashboard, history, cameras, settings
@@ -330,7 +318,6 @@ Regenerate the README screenshots (golden images, no device needed):
 
 ```bash
 cd farmguard_farmer && flutter test tool/screenshot_test.dart --update-goldens
-cd farmguard_camera && flutter test tool/screenshot_test.dart --update-goldens
 ```
 
 ---
