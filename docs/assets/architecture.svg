@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 640" width="1400" height="640" role="img" aria-label="FarmGuard architecture: camera phone to Cloudflare Worker with D1, R2 and FCM, to farmer phone">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1712"/>
+      <stop offset="100%" stop-color="#0a1210"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12261d"/>
+      <stop offset="100%" stop-color="#0e1d16"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16301f"/>
+      <stop offset="100%" stop-color="#10241a"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrowDim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3f8f63"/>
+    </marker>
+    <style>
+      .t  { font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .h  { font-size: 22px; font-weight: 700; fill: #eafaf0; }
+      .sub{ font-size: 13px; font-weight: 500; fill: #7fbf9b; }
+      .b  { font-size: 13.5px; fill: #bcd9c9; }
+      .m  { font-size: 12px; fill: #7fa894; }
+      .lbl{ font-size: 12.5px; font-weight: 600; fill: #6ee7a0; text-anchor: middle; }
+      .ep { font-size: 10.5px; fill: #5f8a74; text-anchor: middle; }
+      .tag{ font-size: 11px; font-weight: 700; letter-spacing: .08em; fill: #0b1712; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="640" rx="18" fill="url(#bg)"/>
+  <rect x="1" y="1" width="1398" height="638" rx="17" fill="none" stroke="#1d3a2b"/>
+
+  <!-- ══ Camera phone ══════════════════════════════════════════ -->
+  <g>
+    <rect x="40" y="90" width="340" height="460" rx="16" fill="url(#panel)" stroke="#1f4231"/>
+    <rect x="40" y="90" width="340" height="4" rx="2" fill="#4ade80" opacity=".85"/>
+    <text class="t h" x="66" y="134">Phone A · Camera</text>
+    <text class="t sub" x="66" y="157">Flutter · Android</text>
+
+    <g class="t b">
+      <text x="66" y="198">YOLO26s W8A32 LiteRT</text>
+      <text x="66" y="224">CameraX preview (YOLOView)</text>
+      <text x="66" y="250">3-of-5 frame gate + cooldown</text>
+      <text x="66" y="276">Snapshot persisted locally</text>
+      <text x="66" y="302">Upload queue with backoff</text>
+      <text x="66" y="328">Heartbeat every 60 s</text>
+    </g>
+
+    <rect x="66" y="356" width="288" height="1" fill="#1f4231"/>
+    <text class="t m" x="66" y="386">token in secure storage</text>
+    <text class="t m" x="66" y="410">native readiness gate</text>
+    <text class="t m" x="66" y="434">20 s startup watchdog</text>
+
+    <rect x="66" y="464" width="196" height="26" rx="13" fill="#4ade80"/>
+    <text class="t tag" x="82" y="482">ON-DEVICE INFERENCE</text>
+  </g>
+
+  <!-- ══ Cloudflare ════════════════════════════════════════════ -->
+  <g>
+    <rect x="520" y="50" width="360" height="540" rx="16" fill="url(#cloud)" stroke="#26543a"/>
+    <text class="t h" x="546" y="94">Cloudflare</text>
+    <text class="t sub" x="546" y="117">one Worker, three bindings</text>
+
+    <rect x="546" y="138" width="308" height="86" rx="12" fill="#0d2017" stroke="#1f4231"/>
+    <text class="t b" x="562" y="166" style="font-weight:700;fill:#d8f3e3">Worker · TypeScript</text>
+    <text class="t m" x="562" y="188">auth · pairing · cameras</text>
+    <text class="t m" x="562" y="208">alerts · images · push</text>
+
+    <rect x="546" y="236" width="148" height="86" rx="12" fill="#0d2017" stroke="#1f4231"/>
+    <text class="t b" x="562" y="264" style="font-weight:700;fill:#d8f3e3">D1</text>
+    <text class="t m" x="562" y="284">SQLite</text>
+    <text class="t m" x="562" y="302">farmers, cameras,</text>
+    <text class="t m" x="562" y="316">events, codes</text>
+
+    <rect x="706" y="236" width="148" height="86" rx="12" fill="#0d2017" stroke="#1f4231"/>
+    <text class="t b" x="722" y="264" style="font-weight:700;fill:#d8f3e3">R2</text>
+    <text class="t m" x="722" y="284">private bucket</text>
+    <text class="t m" x="722" y="302">JPEG snapshots,</text>
+    <text class="t m" x="722" y="316">no public access</text>
+
+    <rect x="546" y="334" width="308" height="86" rx="12" fill="#0d2017" stroke="#1f4231"/>
+    <text class="t b" x="562" y="362" style="font-weight:700;fill:#d8f3e3">FCM HTTP v1</text>
+    <text class="t m" x="562" y="384">RS256 service account → OAuth</text>
+    <text class="t m" x="562" y="404">dead device tokens pruned</text>
+
+    <rect x="546" y="432" width="308" height="86" rx="12" fill="#0d2017" stroke="#1f4231"/>
+    <text class="t b" x="562" y="460" style="font-weight:700;fill:#d8f3e3">Security model</text>
+    <text class="t m" x="562" y="482">HMAC tokens · token version (tv)</text>
+    <text class="t m" x="562" y="502">secrets only in Worker secrets</text>
+  </g>
+
+  <!-- ══ Farmer phone ══════════════════════════════════════════ -->
+  <g>
+    <rect x="1020" y="90" width="340" height="460" rx="16" fill="url(#panel)" stroke="#1f4231"/>
+    <rect x="1020" y="90" width="340" height="4" rx="2" fill="#4ade80" opacity=".85"/>
+    <text class="t h" x="1046" y="134">Phone B · Farmer</text>
+    <text class="t sub" x="1046" y="157">Flutter · Android</text>
+
+    <g class="t b">
+      <text x="1046" y="198">Email + password login</text>
+      <text x="1046" y="224">Live alert feed</text>
+      <text x="1046" y="250">History with real photos</text>
+      <text x="1046" y="276">Pair camera by 6-digit code</text>
+      <text x="1046" y="302">Remove camera (soft unpair)</text>
+      <text x="1046" y="328">Push notification → alert</text>
+    </g>
+
+    <rect x="1046" y="356" width="288" height="1" fill="#1f4231"/>
+    <text class="t m" x="1046" y="386">online = heartbeat ≤ 120 s</text>
+    <text class="t m" x="1046" y="410">DEMO vs LIVE labelling</text>
+    <text class="t m" x="1046" y="434">session expiry → login</text>
+
+    <rect x="1046" y="464" width="216" height="26" rx="13" fill="#4ade80"/>
+    <text class="t tag" x="1062" y="482">AUTHENTICATED API ONLY</text>
+  </g>
+
+  <!-- ══ Camera → Worker ═══════════════════════════════════════ -->
+  <g stroke="#4ade80" stroke-width="1.8" fill="none" marker-end="url(#arrow)">
+    <path d="M380 176 H520"/>
+    <path d="M380 246 H520"/>
+    <path d="M380 316 H520"/>
+  </g>
+  <g class="t lbl">
+    <text x="450" y="168">redeem code</text>
+    <text x="450" y="238">heartbeat 60 s</text>
+    <text x="450" y="308">alert + JPEG</text>
+  </g>
+  <g class="t ep">
+    <text x="450" y="192">POST /redeem</text>
+    <text x="450" y="262">POST /heartbeat</text>
+    <text x="450" y="332">POST /alerts</text>
+  </g>
+
+  <!-- ══ Worker → Farmer ═══════════════════════════════════════ -->
+  <g stroke="#4ade80" stroke-width="1.8" fill="none" marker-end="url(#arrow)">
+    <path d="M880 176 H1020"/>
+    <path d="M880 246 H1020"/>
+    <path d="M880 316 H1020"/>
+  </g>
+  <g class="t lbl">
+    <text x="950" y="168">pull alerts</text>
+    <text x="950" y="238">signed images</text>
+    <text x="950" y="308">push</text>
+  </g>
+  <g class="t ep">
+    <text x="950" y="192">GET /alerts</text>
+    <text x="950" y="262">GET /images/:id</text>
+    <text x="950" y="332">FCM → event_id</text>
+  </g>
+
+  <!-- ══ Reverse: farmer removes, camera disconnects ═══════════ -->
+  <g stroke="#3f8f63" stroke-width="1.4" stroke-dasharray="5 5" fill="none" marker-end="url(#arrowDim)">
+    <path d="M1020 430 H880"/>
+    <path d="M520 430 H380"/>
+  </g>
+  <g class="t lbl" style="fill:#5aa87c">
+    <text x="950" y="422">remove camera</text>
+    <text x="450" y="422">camera disconnect</text>
+  </g>
+  <g class="t ep">
+    <text x="950" y="446">DELETE /cameras/:id</text>
+    <text x="450" y="446">POST /me/unpair</text>
+  </g>
+
+  <text class="t m" x="40" y="616" style="font-size:11px">HTTPS only · farmer token 12 h · camera token 30 d (versioned) · images never public</text>
+</svg>

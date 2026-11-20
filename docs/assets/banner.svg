@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="FarmGuard — on-device AI farm security">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1a13"/>
+      <stop offset="55%" stop-color="#0c2018"/>
+      <stop offset="100%" stop-color="#071009"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6ee7a0"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity=".9"/>
+      <stop offset="60%" stop-color="#4ade80" stop-opacity=".15"/>
+      <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity=".22"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#22c55e" stroke-opacity=".07" stroke-width="1"/>
+    </pattern>
+    <style>
+      .t   { font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .word{ font-size: 74px; font-weight: 800; letter-spacing: -2.5px; fill: #f2fdf6; }
+      .sub { font-size: 20px; font-weight: 500; letter-spacing: .2px; fill: #93c9aa; }
+      .tag { font-size: 13px; font-weight: 700; letter-spacing: .16em; fill: #6ee7a0; }
+      .fine{ font-size: 12px; font-weight: 500; fill: #4e7c62; letter-spacing: .06em; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="320" fill="url(#bg)"/>
+  <rect width="1200" height="320" fill="url(#grid)"/>
+  <ellipse cx="250" cy="150" rx="300" ry="200" fill="url(#halo)"/>
+
+  <!-- contour lines, right side -->
+  <g fill="none" stroke="#22c55e" stroke-opacity=".13" stroke-width="1.2">
+    <path d="M700 320C820 250 900 210 1040 210c70 0 120 14 160 34"/>
+    <path d="M690 340C820 262 906 226 1042 226c62 0 112 12 158 30"/>
+    <path d="M760 320c90-44 150-62 240-62 60 0 110 8 160 24"/>
+    <path d="M840 320c70-26 120-36 180-36 60 0 110 6 160 18"/>
+  </g>
+
+  <!-- logo mark: shield + lens + signal -->
+  <g transform="translate(96,160)">
+    <path d="M0,-78 L62,-52 V4 C62,46 34,68 0,80 C-34,68 -62,46 -62,4 V-52 Z"
+          fill="#0d2a1d" stroke="url(#mark)" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="0" cy="-2" r="20" fill="none" stroke="#6ee7a0" stroke-width="4"/>
+    <circle cx="0" cy="-2" r="7" fill="#6ee7a0"/>
+    <g stroke="#4ade80" stroke-width="3.2" stroke-linecap="round" opacity=".85">
+      <path d="M-30,34 h60"/>
+      <path d="M-22,46 h44"/>
+      <path d="M-12,58 h24"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <text class="t word" x="212" y="150">FarmGuard</text>
+  <rect x="214" y="176" width="420" height="3" rx="1.5" fill="url(#rule)"/>
+  <text class="t sub" x="214" y="214">On-device person detection for small farms</text>
+  <text class="t tag" x="214" y="250">YOLO26s · FLUTTER · CLOUDFLARE WORKERS · D1 · R2 · FCM</text>
+
+  <!-- right-side status chips -->
+  <g class="t fine" text-anchor="end">
+    <text x="1128" y="72">3-of-5 frame gate</text>
+    <text x="1128" y="96">120 s heartbeat truth</text>
+    <text x="1128" y="120">private image storage</text>
+  </g>
+
+  <!-- corner accents -->
+  <path d="M0 0h1200v6H0z" fill="url(#mark)" opacity=".9"/>
+  <rect x="0" y="314" width="1200" height="6" fill="#0b1f15"/>
+</svg>
