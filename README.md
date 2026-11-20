@@ -15,6 +15,7 @@
 
 ![Tests](https://img.shields.io/badge/tests-355%20passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
+![Release](https://img.shields.io/github/v/release/yash-7575/farmguard?include_prereleases)
 ![Status](https://img.shields.io/badge/backend-deployed-success)
 
 **A two-phone farm security system.** One Android phone watches the farm and runs
@@ -245,6 +246,22 @@ farmguard/
 ---
 
 ## Getting started
+
+### Pre-built demo APKs — v1.0.0
+
+Ready to sideload on two Android phones (Android 8.0+) — no build needed:
+
+| Phone | App | Size | Download |
+|---|---|---|---|
+| A — watches the farm | FarmGuard Camera | 198 MB | [`farmguard-camera-debug.apk`](https://github.com/yash-7575/farmguard/releases/download/v1.0.0/farmguard-camera-debug.apk) |
+| B — the farmer's pocket | FarmGuard Farmer | 169 MB | [`farmguard-farmer-debug.apk`](https://github.com/yash-7575/farmguard/releases/download/v1.0.0/farmguard-farmer-debug.apk) |
+
+Allow "install unknown apps" for your browser/file manager, install each APK,
+then follow the six-step pairing walk-through in the
+[release notes](https://github.com/yash-7575/farmguard/releases/tag/v1.0.0)
+or [`docs/FARMGUARD-DEMO-GUIDE.md`](docs/FARMGUARD-DEMO-GUIDE.md). The apps talk
+to the deployed Worker by default. These are debug builds — built for demo
+distribution, not store release.
 
 ### Backend
 
