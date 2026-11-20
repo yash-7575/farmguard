@@ -1,0 +1,30 @@
+{
+  // FarmGuard backend — Cloudflare Worker (Wrangler 4).
+  // Secrets (AUTH_SECRET now, FCM_* in Stage 7) are Wrangler secrets — set with
+  // `wrangler secret put AUTH_SECRET` for remote; local dev uses `.dev.vars`
+  // (gitignored). They are deliberately NOT declared in this file.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "farmguard-backend",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "account_id": "400da14abb9572f0a7e1da55dab96da3",
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "farmguard-db",
+      "database_id": "b6c3371d-6da1-4b98-a2d8-39344bf354a6",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // Private R2 bucket for event photos. Never enable public access on it —
+  // all traffic flows through the authenticated routes in src/routes/images.ts.
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "farmguard-images"
+    }
+  ]
+}

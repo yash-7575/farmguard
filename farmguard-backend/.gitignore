@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Wrangler local state / build output
+.wrangler/
+.dev.vars
+dev-vars.*
+
+# Generated type definitions (regenerate with `npm run cf-typegen`)
+worker-configuration.d.ts
+
+# Logs and coverage
+*.log
+coverage/
