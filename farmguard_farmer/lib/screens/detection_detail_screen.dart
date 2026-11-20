@@ -261,6 +261,10 @@ class _BoxPainter extends CustomPainter {
           fontSize: 11,
           fontWeight: FontWeight.w700,
           height: 1.4,
+          // Roboto is the platform default on Android; naming it explicitly
+          // also keeps the label readable in golden-image tests, where an
+          // unspecified family would resolve to Ahem (solid boxes).
+          fontFamily: 'Roboto',
         ),
       ),
       textDirection: TextDirection.ltr,
