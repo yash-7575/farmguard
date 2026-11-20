@@ -1,0 +1,40 @@
+# ─── Secrets (never commit) ──────────────────────────────────────────────────
+.dev.vars
+dev-vars.*
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+key.properties
+
+# ─── Flutter / Dart ──────────────────────────────────────────────────────────
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+**/android/local.properties
+**/android/.gradle/
+**/android/.cxx/
+**/ios/Flutter/.last_build_id
+**/ios/Pods/
+**/macos/Pods/
+
+# ─── Node / Cloudflare Workers ───────────────────────────────────────────────
+node_modules/
+coverage/
+.wrangler/
+worker-configuration.d.ts
+
+# ─── Tooling ─────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+*.log
+.DS_Store
+Thumbs.db
+
+# ─── Golden-screenshot failure artifacts (harness PNGs ARE committed) ────────
+**/tool/screenshots/failures/
